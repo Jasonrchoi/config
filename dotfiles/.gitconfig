@@ -1,0 +1,34 @@
+[user]
+      email = justinwarrenanderson@gmail.com
+      name = Justin Anderson
+[core]
+      editor = vim
+      pager = delta
+      autocrlf = false
+      safecrlf = true
+[alias]
+      co = checkout
+      ci = commit
+      st = status
+      br = branch
+      hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+      type = cat-file -t
+      dump = cat-file -p
+[merge "ours"]
+    driver = true
+[credential "https://github.com"]
+    username = jwanderson1326
+[open "default"]
+    remote = upstream
+[pull]
+    rebase = false
+[interactive]
+    diffFilter = delta --color-only --diff-so-fancy
+[delta]
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+
