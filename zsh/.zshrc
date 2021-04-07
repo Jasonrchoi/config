@@ -280,6 +280,11 @@ alias tfrm='terraform state rm '
 alias tfmv='terraform state mv '
 alias tflist='terraform state list'
 
+#tmux alias
+alias t='tmux'
+alias ta='t a -t'
+alias tls='t ls'
+alias tn="t new -t"
 ################################################################
 #Set EDITOR
 ################################################################
