@@ -291,5 +291,9 @@ alias tn="t new -t"
 ################################################################
 export EDITOR='nvim'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.u
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# direnv hook
+eval "$(direnv hook zsh)"
+
