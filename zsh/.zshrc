@@ -20,6 +20,7 @@ if [ -f ~/.zplug/init.zsh ]; then
   zplug "zsh-users/zsh-completions", as:plugin
   zplug "zsh-users/zsh-syntax-highlighting", as:plugin
   zplug "nobeans/zsh-sdkman", as:plugin
+  zplug "kiurchv/asdf.plugin.zsh", defer:2
   zplug "junegunn/fzf-bin", \
     from:gh-r, \
     as:command, \
