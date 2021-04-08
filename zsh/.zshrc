@@ -294,6 +294,8 @@ export EDITOR='nvim'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.u
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# direnv hook
-eval "$(direnv hook zsh)"
+# Hook direnv into your shell.
+eval "$(asdf exec direnv hook bash)"
 
+# A shortcut for asdf managed direnv.
+direnv() { asdf exec direnv "$@"; }
