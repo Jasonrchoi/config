@@ -241,6 +241,7 @@ alias pbcopy='xsel --clipboard --input'
 alias zo='source ~/.zshrc'
 alias ve='python3 -m venv venv'
 alias va='source venv/bin/activate'
+alias kipt='cd ~/kepler-repos/kepler-terraform'
 alias kip='cd ~/kepler-repos'
 alias vgit='echo $VAULT_AUTH_GITHUB_TOKEN | pbcopy'
 alias eget='echo "961517735772.dkr.ecr.us-east-1.amazonaws.com" | pbcopy'
@@ -253,7 +254,6 @@ alias rg="rg --hidden"
 alias f="nvim"
 
 alias goans='cd ~/kepler-repos/kepler-ansible'
-alias goterr='cd ~/kepler-repos/kepler-terraform'
 alias gomod='cd ~/kepler-repos/kepler-terraform-modules'
 alias gopack='cd ~/kepler-repos/kepler-packer'
 alias officevpn="sudo netExtender -u janderson@keplergrp.com -d LocalDomain svpn.keplergrp.com:4433"
