@@ -302,9 +302,9 @@ export EDITOR='nvim'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.u
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # Hook direnv into your shell.
-eval "$(asdf exec direnv hook bash)"
-
-# A shortcut for asdf managed direnv.
-direnv() { asdf exec direnv "$@"; }
+if [[ -f $(which direnv) ]]; then
+  eval "$(direnv hook $SHELL)"
+fi

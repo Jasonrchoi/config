@@ -288,6 +288,8 @@ augroup fix_whitespace_save
   autocmd BufWritePre * call TrimWhitespace()
 augroup END
 
+" install vim-jsonc
+autocmd FileType json syntax match Comment +\/\/.\+$+
 " }}}
 " General: Syntax highlighting {{{
 
@@ -455,6 +457,8 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+
 "  }}}
 " General: Key remappings {{{
 
