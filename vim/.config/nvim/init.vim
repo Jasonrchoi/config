@@ -156,6 +156,9 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'vim-scripts/groovyindent-unix'
 
+" Indentation
+Plug 'scrooloose/nerdTree'
+
 " Autocomplete
 Plug 'marijnh/tern_for_vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -179,6 +182,7 @@ for coc_plugin in [
 endfor
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+
 
 call plug#end()
 
@@ -481,6 +485,10 @@ function! GlobalKeyMappings()
 
   " Escape: also clears highlighting
   nnoremap <silent> <esc> :noh<return><esc>
+
+  "NerdTree remap
+  nmap <C-n> :NERDTreeToggle<CR>
+
 
   " J: basically, unmap in normal mode unless range explicitly specified
   nnoremap <silent> <expr> J v:count == 0 ? '<esc>' : 'J'
