@@ -251,6 +251,7 @@ augroup indentation_sr
   autocmd!
   autocmd Filetype * setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=8
   autocmd Filetype python setlocal shiftwidth=4 softtabstop=4 tabstop=8
+  autocmd Filetype make set noexpandtab shiftwidth=8 softtabstop=0
   autocmd Filetype yaml setlocal indentkeys-=<:>
 augroup END
 
