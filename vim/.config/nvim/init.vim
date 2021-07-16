@@ -490,7 +490,28 @@ function! GlobalKeyMappings()
   "NerdTree remap
   nmap <C-n> :NERDTreeToggle<CR>
 
+  " Use <c-space> to trigger completion.
+  inoremap <silent><expr> <c-space> coc#refresh()
 
+  " Hover feature in CoC
+  " Coc: settings for coc.nvim
+  nmap     <silent>        <C-]> <Plug>(coc-definition)
+  nmap     <silent>        <C-LeftMouse> <Plug>(coc-definition)
+  nnoremap <silent>        <C-k> <cmd>call <SID>show_documentation()<CR>
+  inoremap <silent>        <C-s> <cmd>call CocActionAsync('showSignatureHelp')<CR>
+  nmap     <silent>        <leader>st <Plug>(coc-type-definition)
+  nmap     <silent>        <leader>si <Plug>(coc-implementation)
+  nmap     <silent>        <leader>su <Plug>(coc-references)
+  nmap     <silent>        <leader>sr <Plug>(coc-rename)
+  nmap     <silent>        <leader>sa v<Plug>(coc-codeaction-selected)
+  vmap     <silent>        <leader>sa <Plug>(coc-codeaction-selected)
+  nnoremap <silent>        <leader>sn <cmd>CocNext<CR>
+  nnoremap <silent>        <leader>sp <cmd>CocPrev<CR>
+  nnoremap <silent>        <leader>sl <cmd>CocListResume<CR>
+  nnoremap <silent>        <leader>sc <cmd>CocList commands<cr>
+  nnoremap <silent>        <leader>so <cmd>CocList -A outline<cr>
+  nnoremap <silent>        <leader>sw <cmd>CocList -A -I symbols<cr>
+  inoremap <silent> <expr> <c-space> coc#refresh()
   " J: basically, unmap in normal mode unless range explicitly specified
   nnoremap <silent> <expr> J v:count == 0 ? '<esc>' : 'J'
 endfunction
