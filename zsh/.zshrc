@@ -159,8 +159,6 @@ function klone() {
 
 
 
-
-
 function switchenv() {
   # Switch only the environment in the CWD
   # Requires environment as an argument
@@ -230,6 +228,8 @@ function get_ips() {
 alias kvpn="nmcli c up aws"
 alias svpn="nmcli c down aws"
 
+alias vauth='vault login -method=github'
+
 alias sl='ls --color=auto'
 alias ls='ls --color=auto'
 alias ll='ls -alFh --color=auto'
@@ -269,13 +269,16 @@ alias ghview="gh repo view -w"
 alias prlist="gh pr list"
 alias prstatus="gh pr status"
 
-alias -g ...='../../'
-alias -g ....='../../'
-alias -g .....='../../../../'
-alias -g ......='../../../../../'
-alias -g .......='../../../../../../'
-alias -g ........='../../../../../../../'
-alias -g .........='../../../../../../../../'
+alias .='cd ..'
+alias ..='cd ../..'
+alias ...='cd ../../..'
+alias ....='cd ../../../..'
+alias .....='cd ../../../../..'
+alias ......='cd ../../../../../..'
+alias .......='cd ../../../../../../..'
+alias ........='cd ../../../../../../../..'
+alias .........='cd ../../../../../../../../..'
+alias ..........='cd ../../../../../../../../../..'
 
 alias tfrm='terraform state rm '
 alias tfmv='terraform state mv '
@@ -308,3 +311,5 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 if [[ -f $(which direnv) ]]; then
   eval "$(direnv hook $SHELL)"
 fi
+
+export PATH="$HOME/.poetry/bin:$PATH"
