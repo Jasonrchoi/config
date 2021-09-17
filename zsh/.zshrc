@@ -220,7 +220,24 @@ function get_ips() {
   fi
 }
 
+function ssm {
+  # AWS SSM connect to instance. Pass in ECS cluster to select any instance
+  # in the cluster or pass in instance-id
+  if [ -z "$1" ]; then
+    echo "Must Define a cluster! eg mgmt-ecs"
+    return 1
+  fi
 
+  if [ -z "$2" ]; then
+    local INSTANCE_INDEX=0
+  else
+    local INSTANCE_INDEX=$2
+  fi
+
+  local ARN=$(aws ecs list-container-instances --cluster $1 --status ACTIVE | jq ".containerInstanceArns [$INSTANCE_INDEX]" | tr -d '"')
+  local ID=$(aws ecs describe-container-instances --cluster $1 --container-instances $ARN | jq '.containerInstances [0].ec2InstanceId' | tr -d '"')
+  aws ssm start-session --target $ID
+}
 
 ######################################################################
 #ALIASES
