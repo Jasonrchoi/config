@@ -1,6 +1,6 @@
 [user]
-	name = Jasonrchoi
-  email = choiboiling@gmail.com
+	name = Jason Choi
+	email = 76135976+Jasonrchoi@users.noreply.github.com
   [core]
       editor = vim
       autocrlf = false
@@ -19,3 +19,10 @@
     username = Jasonrchoi
 [open "default"]
     remote = upstream
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
