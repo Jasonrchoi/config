@@ -156,6 +156,15 @@ function klone() {
   fi
 }
 
+function bare_klone() {
+  if [[ ! -d ~/kepler-repos/$1 ]]; then
+    git clone --bare git@github.com:KeplerGroup/$1.git ~/kepler-repos/$1
+  else
+    echo "Repo is already kloned!"
+  fi
+}
+
+
 
 
 

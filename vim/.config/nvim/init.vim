@@ -135,6 +135,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
 " Help for vim-plug
 Plug 'junegunn/vim-plug'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 " Make tabline prettier
 Plug 'kh3phr3n/tabline'
 
@@ -146,6 +149,7 @@ Plug 'NLKNguyen/papercolor-theme'
 
 " Utils
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 
 " Language-specific syntax
 Plug 'vim-python/python-syntax'
