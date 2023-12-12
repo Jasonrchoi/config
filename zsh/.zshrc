@@ -73,7 +73,7 @@ export HISTCONTROL=ignorespace
 export HISTFILE=~/.zsh_history
 
 # History: Number of history entries to save to disk
-export SAVEHIST=5000
+export SAVEHIST=10000
 
 
 #######################################################################
@@ -165,9 +165,6 @@ function bare_klone() {
 }
 
 
-
-
-
 function switchenv() {
   # Switch only the environment in the CWD
   # Requires environment as an argument
@@ -197,7 +194,6 @@ function td() {
     return 1
   fi
 }
-
 
 
 function update_program() {
@@ -260,7 +256,6 @@ alias sl='ls --color=auto'
 alias ls='ls --color=auto'
 alias ll='ls -alFh --color=auto'
 alias la='ls -Alfh --color=auto'
-alias cat='bat'
 
 alias pbcopy='xsel --clipboard --input'
 
@@ -274,7 +269,7 @@ alias eget='echo "961517735772.dkr.ecr.us-east-1.amazonaws.com" | pbcopy'
 alias tmux='tmux -2 -f ~/.tmux.conf'
 alias smux='tmuxinator start devops'
 alias dmux='tmuxinator stop devops'
-alias python='python3'
+alias python='/home/jasonchoi/.asdf/installs/python/3.11.0/bin/python'
 alias vim='nvim'
 alias rg="rg --hidden"
 alias f="nvim"
@@ -282,7 +277,7 @@ alias f="nvim"
 alias goans='cd ~/kepler-repos/kepler-ansible'
 alias gomod='cd ~/kepler-repos/kepler-terraform-modules'
 alias gopack='cd ~/kepler-repos/kepler-packer'
-alias officevpn="sudo netExtender -u janderson@keplergrp.com -d LocalDomain svpn.keplergrp.com:4433"
+alias officevpn="sudo netExtender -u jchoi@keplergrp.com -d LocalDomain svpn.keplergrp.com:4433"
 alias homevpn="sudo openvpn --config ~/openvpn/janderson.ovpn"
 alias cookies3="cookiecutter git@github.com:keplergroup/cookiecutter-terraform-s3-bucket.git"
 alias cookieci="cookiecutter git@github.com:keplergroup/cookiecutter-ci-files.git"
@@ -342,3 +337,13 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 # Added by serverless binary installer
 export PATH="$HOME/.serverless/bin:$PATH"
+
+export PATH="$HOME/.asdf/installs/python/3.9.0/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+export R_EXTRA_CONFIGURE_OPTIONS='--enable-R-shlib --with-cairo'
+export PYTHON_CONFIGURE_OPTS='--enable-shared'
+

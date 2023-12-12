@@ -103,15 +103,6 @@ augroup redraw_on_refocus
   autocmd FocusGained * redraw!
 augroup END
 
-" Terminal Color Support: only set guicursor if truecolor
-if $COLORTERM ==# 'truecolor'
-  set termguicolors
-else
-  set guicursor=
-endif
-
-" Default Background:
-set background=dark
 
 " Lightline: specifics for Lightline
 set laststatus=2
@@ -128,11 +119,11 @@ set updatetime=750
 set path+=/usr/include/x86_64-linux-gnu/
 
 " }}}
-" General: Plugin Install {{{
+" General: Plugin Install {{
 
 call plug#begin('~/.vim/plugged')
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' }
-" Help for vim-plug
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+" Help for vim-pluPlug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}g
 Plug 'junegunn/vim-plug'
 
 Plug 'nvim-lua/plenary.nvim'
@@ -145,7 +136,7 @@ Plug 'kh3phr3n/tabline'
 Plug 'fcpg/vim-altscreen'
 
 " Basic coloring
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'EdenEast/nightfox.nvim' " Vim-Plug
 
 " Utils
 Plug 'tpope/vim-commentary'
@@ -162,6 +153,9 @@ Plug 'vim-scripts/groovyindent-unix'
 
 " Indentation
 Plug 'scrooloose/nerdTree'
+
+" Worktree
+Plug 'ThePrimeagen/git-worktree.nvim'
 
 " Autocomplete
 Plug 'marijnh/tern_for_vim'
@@ -302,48 +296,6 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 " }}}
 " General: Syntax highlighting {{{
 
-" ********************************************************************
-" Papercolor: options
-" ********************************************************************
-let g:PaperColor_Theme_Options = {}
-let g:PaperColor_Theme_Options.theme = {}
-
-" Bold And Italics:
-let g:PaperColor_Theme_Options.theme.default = {
-      \ 'allow_bold': 1,
-      \ 'allow_italic': 1,
-      \ }
-
-" Folds And Highlights:
-let g:PaperColor_Theme_Options.theme['default.dark'] = {}
-let g:PaperColor_Theme_Options.theme['default.dark'].override = {
-      \ 'folded_bg' : ['gray22', '0'],
-      \ 'folded_fg' : ['gray69', '6'],
-      \ 'visual_fg' : ['gray12', '0'],
-      \ 'visual_bg' : ['gray', '6'],
-      \ }
-
-" Language Specific Overrides:
-let g:PaperColor_Theme_Options.language = {
-      \    'python': {
-      \      'highlight_builtins' : 1,
-      \    },
-      \    'cpp': {
-      \      'highlight_standard_library': 1,
-      \    },
-      \    'c': {
-      \      'highlight_builtins' : 1,
-      \    }
-      \ }
-
-" Load Syntax:
-try
-  colorscheme PaperColor
-catch
-  echo 'An error occured while configuring PaperColor'
-endtry
-
-" }}}
 "  Plugin: Configure {{{
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
@@ -563,6 +515,16 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 
+" Terminal Color Support: only set guicursor if truecolor
+if $COLORTERM ==# 'truecolor'
+  set termguicolors
+  colorscheme terafox
+else
+  set guicursor=
+endif
+
+" Default Background:
+set background=dark
 "  }}}
 " General: Key remappings {{{
 
@@ -613,6 +575,18 @@ function! GlobalKeyMappings()
   inoremap <silent> <expr> <c-space> coc#refresh()
   " J: basically, unmap in normal mode unless range explicitly specified
   nnoremap <silent> <expr> J v:count == 0 ? '<esc>' : 'J'
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
+  " remap for complete to use tab and <cr>
+  inoremap <silent><expr> <TAB>
+        \ coc#pum#visible() ? coc#pum#next(1):
+        \ <SID>check_back_space() ? "\<Tab>" :
+        \ coc#refresh()
+  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+  inoremap <silent><expr> <c-space> coc#refresh()
+
+  hi CocSearch ctermfg=12 guifg=#18A3FF
+  hi CocMenuSel ctermbg=109 guibg=#13354A
 endfunction
 
 call GlobalKeyMappings()
