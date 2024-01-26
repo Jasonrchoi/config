@@ -271,6 +271,7 @@ alias smux='tmuxinator start devops'
 alias dmux='tmuxinator stop devops'
 alias python='/home/jasonchoi/.asdf/installs/python/3.11.0/bin/python'
 alias vim='nvim'
+alias jvim='nvim -u ~/.config/nvim/init2.vim'
 alias rg="rg --hidden"
 alias f="nvim"
 
@@ -311,6 +312,8 @@ alias ta='t a -t'
 alias tls='t ls'
 alias tn="t new -t"
 
+#kubectl
+alias k='kubectl'
 
 ################################################################
 #PATH
