@@ -315,6 +315,8 @@ alias tn="t new -t"
 #kubectl
 alias k='kubectl'
 
+#nvimdotfilesync
+alias nvimdotsync='cp -r  ./.config/nvim-jvim/ ./config/vim/.config/'
 ################################################################
 #PATH
 ################################################################
