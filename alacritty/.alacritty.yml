@@ -78,35 +78,34 @@ font:
   # false.
   #use_thin_strokes: true
 #Alacritty Themes
+# Colors (Iris)
 colors:
-  name: Sweet Love
-  author: Boroshlawa
+  # Default colors
   primary:
-    background: "#1F1F1F"
-    foreground: "#C0B18B"
-  cursor:
-    text: "#1F1F1F"
-    cursor: "#C0B18B"
+    background: '#272537'
+    foreground: '#e8e6e9'
+
+  # Normal colors
   normal:
-    black: "#4A3637"
-    red: "#D17B49"
-    green: "#7B8748"
-    yellow: "#AF865A"
-    blue: "#535C5C"
-    magenta: "#775759"
-    cyan: "#6D715E"
-    white: "#C0B18B"
+    black:   '#111133'
+    red:     '#d61d52'
+    green:   '#48a842'
+    yellow:  '#e1a51c'
+    blue:    '#5556d3'
+    magenta: '#8650d3'
+    cyan:    '#52afb7'
+    white:   '#9f9aa7'
+
+  # Bright colors
   bright:
-    black: "#402E2E"
-    red: "#AC5D2F"
-    green: "#647035"
-    yellow: "#8F6840"
-    blue: "#444B4B"
-    magenta: "#614445"
-    cyan: "#585C49"
-    white: "#978965"
-# Visual Bell
-#
+    black:   '#484867'
+    red:     '#e15877'
+    green:   '#71ab3a'
+    yellow:  '#c6a642'
+    blue:    '#6d6dc9'
+    magenta: '#956ad3'
+    cyan:    '#6ab6bd'
+    white:   '#e8e6e9'
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
 # rung, the terminal background will be set to white and transition back to the
 # default background color. You can control the rate of this transition by

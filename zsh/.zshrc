@@ -270,8 +270,8 @@ alias tmux='tmux -2 -f ~/.tmux.conf'
 alias smux='tmuxinator start devops'
 alias dmux='tmuxinator stop devops'
 alias python='/home/jasonchoi/.asdf/installs/python/3.11.0/bin/python'
-alias vim='nvim'
-alias jvim='nvim -u ~/.config/nvim/init2.vim'
+alias jvim='nvim'
+alias vim='NVIM_APPNAME=nvim-jvim nvim'
 alias rg="rg --hidden"
 alias f="nvim"
 
