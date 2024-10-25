@@ -17,6 +17,8 @@
     driver = true
 [credential "https://github.com"]
     username = Jasonrchoi
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
 [open "default"]
     remote = upstream
 [url "git@github.com:"]
@@ -26,3 +28,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

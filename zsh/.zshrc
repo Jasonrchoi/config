@@ -343,7 +343,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 # Added by serverless binary installer
 export PATH="$HOME/.serverless/bin:$PATH"
 
-export PATH="$HOME/.asdf/installs/python/3.9.0/bin:$PATH"
+export PATH="$HOME/.asdf/installs/python/3.11.0/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # Generated for envman. Do not edit.
