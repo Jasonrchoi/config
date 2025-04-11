@@ -20,11 +20,11 @@ if [ -f ~/.zplug/init.zsh ]; then
   zplug "zsh-users/zsh-completions", as:plugin
   zplug "zsh-users/zsh-syntax-highlighting", as:plugin
   zplug "nobeans/zsh-sdkman", as:plugin
-  zplug "kiurchv/asdf.plugin.zsh", defer:2
-  zplug "junegunn/fzf-bin", \
-    from:gh-r, \
-    as:command, \
-    rename-to:fzf
+  # zplug "kiurchv/asdf.plugin.zsh", defer:2
+  # zplug "junegunn/fzf-bin", 
+  #   from:gh-r, \
+  #   as:command, \
+  #   rename-to:fzf
   zplug "mdumitru/git-aliases", as:plugin
 
 # Add Powerlevel10k
@@ -90,27 +90,24 @@ unsetopt AUTO_REMOVE_SLASH
 # fzf SETTINGS
 #######################################################################
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Use fd (https://github.com/sharkdp/fd) instead of the default find
 # command for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
-_fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
-}
-
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" . "$1"
-}
-
-export FZF_DEFAULT_OPTS="--bind=ctrl-o:toggle-preview --ansi --preview 'bat {}' --preview-window hidden"
-FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"' \
-export FZF_DEFAULT_COMMAND
-
-
-
+# _fzf_compgen_path() {
+#   fd --hidden --follow --exclude ".git" . "$1"
+# }
+#
+# # Use fd to generate the list for directory completion
+# _fzf_compgen_dir() {
+#   fd --type d --hidden --follow --exclude ".git" . "$1"
+# }
+#
+# export FZF_DEFAULT_OPTS="--bind=ctrl-o:toggle-preview --ansi --preview 'bat {}' --preview-window hidden"
+# FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"' \
+# export FZF_DEFAULT_COMMAND
+# Set up fzf key bindings and fuzzy completion
 
 ################################################################################
 # ZShell Auto Completion
@@ -121,7 +118,7 @@ zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-compl
 
 # CURRENT STATE: does not select any sort of searching
 # searching was too annoying and I didn't really use it
-# If you want it back, use "search-backward" as an option
+# If ycu want it back, use "search-backward" as an option
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 
@@ -142,7 +139,8 @@ zmodload -i zsh/complist
 # Add autocompletion path
 fpath+=~/.zfunc
 
-
+# # Set up fzf key bindings and fuzzy completion
+# source <(fzf --zsh)
 
 ######################################################################
 # FUNCTIONS
@@ -244,7 +242,29 @@ function ssm {
   aws ssm start-session --target $ID
 }
 
-######################################################################
+function restart_slack {
+  # Get all matching PIDs (each on its own line)
+  local pids
+  pids=$(pgrep -i slack)
+
+  if [ -n "$pids" ]; then
+    echo "Found Slack running with the following PID(s):"
+    echo "$pids"
+    echo "$pids" | while IFS= read -r pid; do
+      echo "Killing Slack process with PID $pid"
+      kill "$pid"
+    done
+    echo "Waiting for processes to terminate..."
+    sleep 2
+  else
+    echo "Slack is not running."
+  fi
+
+  echo "Starting Slack..."
+  nohup slack &> /dev/null &
+  echo "Slack restarted."
+}
+#####################################################################
 #ALIASES
 ######################################################################
 alias kvpn="nmcli c up aws"
@@ -291,16 +311,16 @@ alias ghview="gh repo view -w"
 alias prlist="gh pr list"
 alias prstatus="gh pr status"
 
-alias .='cd ..'
-alias ..='cd ../..'
-alias ...='cd ../../..'
-alias ....='cd ../../../..'
-alias .....='cd ../../../../..'
-alias ......='cd ../../../../../..'
-alias .......='cd ../../../../../../..'
-alias ........='cd ../../../../../../../..'
-alias .........='cd ../../../../../../../../..'
-alias ..........='cd ../../../../../../../../../..'
+alias ..='cd ../'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
+alias ........='cd ../../../../../../..'
+alias .........='cd ../../../../../../../..'
+alias ..........='cd ../../../../../../../../..'
+alias ...........='cd ../../../../../../../../../..'
 
 alias tfrm='terraform state rm '
 alias tfmv='terraform state mv '
@@ -352,3 +372,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export R_EXTRA_CONFIGURE_OPTIONS='--enable-R-shlib --with-cairo'
 export PYTHON_CONFIGURE_OPTS='--enable-shared'
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(zoxide init zsh)"
+
+
+eval "$(mise activate zsh)"
